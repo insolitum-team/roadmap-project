@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 fastapi = "^0.101.1"
 alembic = "^1.11.3"
+sphinx-multiversion = "^0.2.4"
 
 
 [build-system]
