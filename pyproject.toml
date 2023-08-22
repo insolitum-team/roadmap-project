@@ -2,15 +2,13 @@
 name = "roadmap-project"
 version = "0.1.0"
 description = ""
-authors = ["buhovets <x10c@duck.com>"]
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "roadmap_project"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-sphinx = "^7.2.2"
-sphinx-rtd-theme = "^1.2.2"
 fastapi = "^0.101.1"
+alembic = "^1.11.3"
 
 
 [build-system]
