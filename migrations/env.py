@@ -9,7 +9,7 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
+# Interpret the settings file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
@@ -19,9 +19,9 @@ fileConfig(config.config_file_name)
 # target_metadata = mymodel.Base.metadata
 target_metadata = None
 
-# other values from the config, defined by the needs of env.py,
+# other values from the settings, defined by the needs of env.py,
 # can be acquired:
-# my_important_option = config.get_main_option("my_important_option")
+# my_important_option = settings.get_main_option("my_important_option")
 # ... etc.
 
 
