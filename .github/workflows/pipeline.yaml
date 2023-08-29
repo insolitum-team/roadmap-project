@@ -1,0 +1,19 @@
+name: Pipeline
+
+on:
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install poetry && poetry install --no-interaction
+      - name: Lint
+        run: poetry run isort . && poetry run black .
