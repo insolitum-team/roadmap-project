@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, Column, String, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 
-Base = declarative_base()
+from common.db.database import Base
 
 
 class Roadmap(Base):
