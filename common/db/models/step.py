@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 
-Base = declarative_base()
+from common.db.database import Base
 
 
 class Step(Base):
@@ -14,6 +14,8 @@ class Step(Base):
     parent_step_id = Column(Integer, ForeignKey('steps.id'))
 
     roadmap = relationship('Roadmap', back_populates='steps')
-    child_steps = relationship('Step', back_populates='parent_step', remote_side=[id])
+    child_steps = relationship(
+        'Step', back_populates='parent_step', remote_side=[id])
     posts = relationship('Post', back_populates='step')
-    parent_step = relationship('Step', remote_side=[id], back_populates='child_steps')
+    parent_step = relationship(
+        'Step', remote_side=[id], back_populates='child_steps')

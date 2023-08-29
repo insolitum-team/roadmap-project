@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 
-Base = declarative_base()
+from common.db.database import Base
 
 
 class Progress(Base):
