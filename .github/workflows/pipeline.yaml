@@ -28,13 +28,11 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: |
-          pip install -e .
-          pip install sphinx-rtd-theme
+        run: pip install --upgrade pip && pip install poetry && poetry install --no-interaction
       - name: Sphinx build
         run: |
-          sphinx-apidoc --output-dir docs/source . common --separate
-          sphinx-build docs docs/build/html
+          poetry run sphinx-apidoc --output-dir docs/source . common --separate
+          poetry run sphinx-build docs docs/build/html
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
