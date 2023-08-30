@@ -2,7 +2,7 @@ name: Pipeline
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -17,3 +17,26 @@ jobs:
         run: pip install --upgrade pip && pip install poetry && poetry install --no-interaction
       - name: Lint
         run: poetry run isort . && poetry run black .
+
+  docs:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install poetry && poetry install --no-interaction
+      - name: Sphinx build
+        run: |
+          poetry run sphinx-apidoc --output-dir docs/source . common --separate
+          poetry run sphinx-build docs/source docs/build/html
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
+          force_orphan: true
