@@ -5,23 +5,36 @@ from sqlalchemy import pool
 
 from alembic import context
 
+from common.db.database import Base
+from common.settings.config import POSTGRES_HOST, POSTGRES_PORT, POSTGRES_NAME, POSTGRES_USER, POSTGRES_PASSWORD
+
+from common.db.models import *
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
+section = config.config_ini_section
+config.set_section_option(section, "POSTGRES_HOST", str(POSTGRES_HOST))
+config.set_section_option(section, "POSTGRES_PORT", str(POSTGRES_PORT))
+config.set_section_option(section, "POSTGRES_USER", str(POSTGRES_USER))
+config.set_section_option(section, "POSTGRES_NAME", str(POSTGRES_NAME))
+config.set_section_option(section, "POSTGRES_PASSWORD", str(POSTGRES_PASSWORD))
+
+# Interpret the settings file for Python logging.
 # This line sets up loggers basically.
-fileConfig(config.config_file_name)
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = Base.metadata
 
-# other values from the config, defined by the needs of env.py,
+# other values from the settings, defined by the needs of env.py,
 # can be acquired:
-# my_important_option = config.get_main_option("my_important_option")
+# my_important_option = settings.get_main_option("my_important_option")
 # ... etc.
 
 
