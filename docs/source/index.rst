@@ -10,7 +10,9 @@ Welcome to Roadmapper API's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   modules
 
+.. image:: _static/img_hGwfJJVHgh8AyW4jNWDb.png
 
 
 Indices and tables
