@@ -5,7 +5,7 @@ from common.db.database import Base
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True, nullable=False)
@@ -16,6 +16,6 @@ class User(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     is_active = Column(Boolean, default=True)
 
-    roadmaps = relationship('Roadmap', back_populates='user')
-    posts = relationship('Post', back_populates='user')
-    progresses = relationship('Progress', back_populates='user')
+    roadmaps = relationship("Roadmap", back_populates="user")
+    posts = relationship("Post", back_populates="user")
+    progresses = relationship("Progress", back_populates="user")

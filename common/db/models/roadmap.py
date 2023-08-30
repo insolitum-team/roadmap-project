@@ -1,17 +1,17 @@
-from sqlalchemy import Integer, Column, String, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
 from common.db.database import Base
 
 
 class Roadmap(Base):
-    __tablename__ = 'roadmaps'
+    __tablename__ = "roadmaps"
 
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     description = Column(String)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
-    user = relationship('User', back_populates='roadmaps')
-    steps = relationship('Step', back_populates='roadmap')
-    categories = relationship('Category', back_populates='roadmap')
+    user = relationship("User", back_populates="roadmaps")
+    steps = relationship("Step", back_populates="roadmap")
+    categories = relationship("Category", back_populates="roadmap")
