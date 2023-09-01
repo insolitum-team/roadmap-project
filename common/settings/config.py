@@ -27,4 +27,4 @@ JWT_SECRET = os.getenv("JWT_SECRET")
 JWT_ACCESS_TTL = int(os.getenv("JWT_ACCESS_TTL"))
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
 
-CORS_ORIGINS = json.loads(os.getenv("CORS_ORIGINS", default="*"))
+CORS_ORIGINS = json.loads(os.getenv("CORS_ORIGINS"))
