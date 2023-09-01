@@ -1,6 +1,8 @@
 from sqlalchemy import Boolean, Column, DateTime, Integer, String, func
 from sqlalchemy.orm import relationship
 
+from common.db.models.associations import user_roadmap_association
+
 from common.db.database import Base
 
 
@@ -16,6 +18,8 @@ class User(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     is_active = Column(Boolean, default=True)
 
-    roadmaps = relationship("Roadmap", back_populates="user")
-    posts = relationship("Post", back_populates="user")
-    progresses = relationship("Progress", back_populates="user")
+    roadmaps = relationship(
+        "Roadmap",
+        secondary=user_roadmap_association,
+        back_populates="applicants"
+    )
