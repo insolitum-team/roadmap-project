@@ -8,6 +8,5 @@ class Category(Base):
     __tablename__ = "categories"
 
     id = Column(Integer, primary_key=True)
-    roadmap_id = Column(Integer, ForeignKey("roadmaps.id"), nullable=False)
 
-    roadmap = relationship("Roadmap", back_populates="categories")
+    roadmaps = relationship("Roadmap", back_populates="category")
