@@ -17,6 +17,7 @@ services:
     container_name: fastapi
     build: .
     working_dir: /usr/src/api
+    entrypoint: ./scripts/entrypoint.sh
     volumes:
       - .:/usr/src/api
     ports:

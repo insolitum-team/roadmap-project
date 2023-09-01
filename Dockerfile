@@ -16,5 +16,3 @@ COPY . ./
 
 RUN chmod +x ./scripts/entrypoint.sh && \
     chmod +x ./scripts/check-migrations.sh
-
-ENTRYPOINT ["./scripts/entrypoint.sh"]
