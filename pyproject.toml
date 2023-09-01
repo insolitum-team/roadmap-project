@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.101.1"
-alembic = "^1.11.3"
+alembic = "^1.12.0"
 black = "^23.7.0"
 isort = "^5.12.0"
 python-dotenv = "^1.0.0"
