@@ -12,9 +12,11 @@ class Roadmap(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     description = Column(String)
-    category = Column(String, nullable=False)
-
+    category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
+    
+    category = relationship("Category", back_populates="roadmaps")
     steps = relationship("Step", back_populates="roadmap")
+    
     applicants = relationship(
         "User",
         secondary=user_roadmap_association,
