@@ -63,6 +63,8 @@ jobs:
         run: pip install --upgrade pip && pip install poetry && poetry install --no-interaction
       - name: Run migrations
         run: poetry run alembic upgrade head
+      - name: Check coverage
+        run: poetry run ./scripts/check-coverage.sh
       - name: Test auth
         run: poetry run pytest tests/test_auth.py
 
