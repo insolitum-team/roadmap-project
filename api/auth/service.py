@@ -83,8 +83,8 @@ class AuthService:
 
         return self.create_token(user)
 
-    async def authenticate_user(self, username: str, password: str) -> TokenModel:
-        user = await self.crud.get_user(username=username)
+    async def authenticate_user(self, username_or_email: str, password: str) -> TokenModel:
+        user = await self.crud.get_user(username_or_email=username_or_email)
 
         if not user:
             raise AuthenticateExecption()

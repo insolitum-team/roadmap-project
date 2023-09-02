@@ -7,18 +7,27 @@ from tests.conftest import async_session_maker
 
 
 @pytest.mark.asyncio
-async def test_sign_up(ac: AsyncClient):
+@pytest.mark.parametrize(
+    "username, email, password",
+    [
+        ("username", "username@gmail.com", "password"),
+        ("test", "test@gmail.com", "password"),
+    ]
+)
+async def test_sign_up(
+    ac: AsyncClient, username: str, email: str, password: str,
+):
     response = await ac.post(
         "/auth/sign-up",
         json={
-            "username": "test",
-            "email": "test@gmail.com",
-            "password": "password",
+            "username": username,
+            "email": email,
+            "password": password,
         },
     )
     assert response.status_code == 200
     async with async_session_maker() as session:
-        query = select(User).filter_by(username="test")
+        query = select(User).filter_by(username=username)
         result = await session.execute(query)
         assert result.scalar()
     assert response.json()["token_type"] == "bearer"
@@ -26,12 +35,19 @@ async def test_sign_up(ac: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_sign_in(ac: AsyncClient):
+@pytest.mark.parametrize(
+    "username_or_email, password",
+    [
+        ("username", "password"),
+        ("test@gmail.com", "password")
+    ]
+)
+async def test_sign_in(ac: AsyncClient, username_or_email: str, password: str):
     response = await ac.post(
         "/auth/sign-in",
         json={
-            "username": "test",
-            "password": "password",
+            "username": username_or_email,
+            "password": password,
         },
     )
     assert response.status_code == 200
