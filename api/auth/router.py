@@ -17,5 +17,5 @@ async def sign_in(
     service: AuthService = Depends()
 ):
     return await service.authenticate_user(
-        username=data.username, password=data.password
+        username_or_email=data.username, password=data.password
     )
