@@ -6,6 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.auth.router import router as auth_router
 from api.roadmaps.router import router as roadmaps_router
 from api.stats.router import router as stats_router
+from api.steps.router import router as steps_router
+from api.posts.router import router as posts_router
+from api.categories.router import router as categories_router
 from common.settings import config
 
 
@@ -24,6 +27,9 @@ def get_application() -> FastAPI:
     application.include_router(auth_router)
     application.include_router(roadmaps_router)
     application.include_router(stats_router)
+    application.include_router(categories_router)
+    application.include_router(steps_router)
+    application.include_router(posts_router)
     
     # CORS
     origins = config.CORS_ORIGINS
