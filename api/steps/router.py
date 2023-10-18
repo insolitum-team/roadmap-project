@@ -1,3 +1,3 @@
 from fastapi import APIRouter, Depends
 
-router = APIRouter(tags=["roadmaps"])
+router = APIRouter(tags=["steps"])
