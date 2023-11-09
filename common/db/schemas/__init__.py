@@ -1,2 +1,2 @@
 from .token import TokenModel
-from .user import UserCreateModel, UserLoginModel, UserModel
+from .user import UserCreateModel, UserLoginModel, UserModel, UserUpdateModel

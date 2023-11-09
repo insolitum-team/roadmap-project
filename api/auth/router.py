@@ -12,10 +12,7 @@ async def sign_up(data: UserCreateModel, service: AuthService = Depends()):
 
 
 @router.post("/sign-in", response_model=TokenModel)
-async def sign_in(
-    data: UserLoginModel,
-    service: AuthService = Depends()
-):
+async def sign_in(data: UserLoginModel, service: AuthService = Depends()):
     return await service.authenticate_user(
         username_or_email=data.username, password=data.password
     )
