@@ -19,7 +19,6 @@ class UserCreateModel(UserBaseModel):
 
 class UserUpdateModel(UserBaseModel):
     email: str
-    password: str
 
 
 class UserLoginModel(UserBaseModel):
