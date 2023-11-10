@@ -5,7 +5,6 @@ from argon2 import PasswordHasher
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.auth.exceptions import AuthenticateExecption, ValidationException
@@ -53,9 +52,7 @@ class AuthService:
     def validate_token(cls, token: str) -> User:
         try:
             payload = jwt.decode(
-                token,
-                config.JWT_SECRET,
-                algorithms=[config.JWT_ALGORITHM]
+                token, config.JWT_SECRET, algorithms=[config.JWT_ALGORITHM]
             )
         except jwt.PyJWTError:
             raise ValidationException()
@@ -63,7 +60,7 @@ class AuthService:
         data = payload.get("user")
 
         try:
-            user = User.parse_obj(data)
+            user = UserModel.model_validate(data)
         except ValidationError:
             raise ValidationException()
 
@@ -83,13 +80,17 @@ class AuthService:
 
         return self.create_token(user)
 
-    async def authenticate_user(self, username_or_email: str, password: str) -> TokenModel:
+    async def authenticate_user(
+        self, username_or_email: str, password: str
+    ) -> TokenModel:
         user = await self.crud.get_user(username_or_email=username_or_email)
 
         if not user:
             raise AuthenticateExecption()
 
-        if not self.verify_password(plain_password=password, hashed_password=user.password):
+        if not self.verify_password(
+            plain_password=password, hashed_password=user.password
+        ):
             raise AuthenticateExecption()
 
         return self.create_token(user)
