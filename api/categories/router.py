@@ -71,7 +71,7 @@ async def update_category(
     service: CategoryService = Depends(),
 ):
     try:
-        data = await service.update_user(id=id, data=data, user=user)
+        data = await service.update_category(id=id, data=data, user=user)
         return {
             "status": "success",
             "data": data,

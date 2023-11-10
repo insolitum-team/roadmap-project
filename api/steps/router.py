@@ -5,11 +5,11 @@ from common.db.schemas.step import StepCreateModel, StepUpdateModel
 
 from common.db.schemas.user import UserModel
 
-router = APIRouter(prefix="/roadmaps", tags=["steps"])
+router = APIRouter(prefix="/steps", tags=["steps"])
 
 
 @router.post("")
-async def create_category(
+async def create_step(
     data: StepCreateModel,
     user: UserModel = Depends(get_current_user),
     service: StepService = Depends(),

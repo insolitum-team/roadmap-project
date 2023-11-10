@@ -1,8 +1,8 @@
-import select
 from fastapi import Depends
 from api.categories.exceptions import CategoryNotFoundException
 
 from common.db.database import get_async_session
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from common.db.models.category import Category
 from common.db.schemas.category import CategoryUpdateModel
@@ -21,7 +21,7 @@ class CategoryService:
             name=data.name,
             description=data.description,
         )
-        self.session.add(category)
+        await self.session.add(category)
         await self.session.commit()
         return category
 
