@@ -1,0 +1,20 @@
+api.users package
+=================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   api.users.exceptions
+   api.users.router
+   api.users.service
+
+Module contents
+---------------
+
+.. automodule:: api.users
+   :members:
+   :undoc-members:
+   :show-inheritance:

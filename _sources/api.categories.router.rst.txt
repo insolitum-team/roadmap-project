@@ -1,0 +1,7 @@
+api.categories.router module
+============================
+
+.. automodule:: api.categories.router
+   :members:
+   :undoc-members:
+   :show-inheritance:

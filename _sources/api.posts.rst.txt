@@ -1,0 +1,20 @@
+api.posts package
+=================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   api.posts.exceptions
+   api.posts.router
+   api.posts.service
+
+Module contents
+---------------
+
+.. automodule:: api.posts
+   :members:
+   :undoc-members:
+   :show-inheritance:

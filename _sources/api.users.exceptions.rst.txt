@@ -1,0 +1,7 @@
+api.users.exceptions module
+===========================
+
+.. automodule:: api.users.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

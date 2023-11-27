@@ -1,0 +1,7 @@
+api.categories.exceptions module
+================================
+
+.. automodule:: api.categories.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+api.posts.router module
+=======================
+
+.. automodule:: api.posts.router
+   :members:
+   :undoc-members:
+   :show-inheritance:

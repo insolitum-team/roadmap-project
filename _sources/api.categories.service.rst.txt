@@ -1,0 +1,7 @@
+api.categories.service module
+=============================
+
+.. automodule:: api.categories.service
+   :members:
+   :undoc-members:
+   :show-inheritance:

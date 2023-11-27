@@ -1,0 +1,7 @@
+api.users.router module
+=======================
+
+.. automodule:: api.users.router
+   :members:
+   :undoc-members:
+   :show-inheritance:

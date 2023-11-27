@@ -1,0 +1,20 @@
+api.categories package
+======================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   api.categories.exceptions
+   api.categories.router
+   api.categories.service
+
+Module contents
+---------------
+
+.. automodule:: api.categories
+   :members:
+   :undoc-members:
+   :show-inheritance:

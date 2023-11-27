@@ -1,0 +1,7 @@
+api.users.service module
+========================
+
+.. automodule:: api.users.service
+   :members:
+   :undoc-members:
+   :show-inheritance:
